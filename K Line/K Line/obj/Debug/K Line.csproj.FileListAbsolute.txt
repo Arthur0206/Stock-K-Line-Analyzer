@@ -1,9 +1,33 @@
+C:\Projects\K Line\K Line\K Line\bin\Debug\K Line.exe.config
+C:\Projects\K Line\K Line\K Line\obj\Debug\K Line.csprojResolveAssemblyReference.cache
+C:\Projects\K Line\K Line\K Line\obj\Debug\K_Line.Form1.resources
+C:\Projects\K Line\K Line\K Line\obj\Debug\K_Line.Properties.Resources.resources
+C:\Projects\K Line\K Line\K Line\obj\Debug\K Line.csproj.GenerateResource.Cache
+C:\Projects\K Line\K Line\K Line\bin\Debug\K Line.exe
+C:\Projects\K Line\K Line\K Line\bin\Debug\K Line.pdb
+C:\Projects\K Line\K Line\K Line\obj\Debug\K Line.exe
+C:\Projects\K Line\K Line\K Line\obj\Debug\K Line.pdb
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\bin\Debug\K Line.exe.config
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K Line.exe
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K Line.pdb
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\bin\Debug\K Line.exe
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\bin\Debug\K Line.pdb
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K Line.csprojResolveAssemblyReference.cache
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K_Line.Form1.resources
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K_Line.Properties.Resources.resources
+C:\Users\Arthur\Desktop\K Line\K Line\K Line\obj\Debug\K Line.csproj.GenerateResource.Cache
+<<<<<<< HEAD
 C:\GIT Projects\Sosoman\K Line\K Line\K Line\bin\Debug\K Line.exe.config
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\bin\Debug\K Line.exe
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\bin\Debug\K Line.pdb
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K_Line.Form1.resources
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K_Line.Properties.Resources.resources
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K Line.csproj.GenerateResource.Cache
 C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K Line.exe
 C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K Line.pdb
-C:\GIT Projects\Sosoman\K Line\K Line\K Line\obj\Debug\K Line.csprojResolveAssemblyReference.cache
+=======
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\bin\Debug\K Line.exe.config
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K Line.exe
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K Line.pdb
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\bin\Debug\K Line.exe
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\bin\Debug\K Line.pdb
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K Line.csprojResolveAssemblyReference.cache
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K_Line.Form1.resources
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K_Line.Properties.Resources.resources
+C:\Projects\Git Repositeries\Sosoman\K-Line\K Line\K Line\obj\Debug\K Line.csproj.GenerateResource.Cache
+>>>>>>> 14fc9bff0f0b233e2b9a11eea6b7740265b4c204
