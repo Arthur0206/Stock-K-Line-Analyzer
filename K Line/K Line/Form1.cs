@@ -16,7 +16,7 @@ namespace K_Line
         String endYear;
         WebClient Client = new WebClient();
         int rulesLowPointInDays = 10;
-        int rulesNumOfRed = 10;
+        int rulesNumOfRed = 3;
         int rulesWaitingDays = 30;
         double rulesWaitingProfit = 3;
         int totalStickPatternFound = 0;
@@ -330,29 +330,6 @@ namespace K_Line
             MessageTextBox.Clear();
             totalStickPatternFound = 0;
             totalProfitMatchFound = 0;
-        }
-
-        private void textBoxWaitingDays_TextChanged(object sender, EventArgs e)
-        {
-            rulesWaitingDays = Convert.ToInt32(this.Text);
-        }
-
-        private void textBoxLowPointPeriod_TextChanged(object sender, EventArgs e)
-        {
-            rulesLowPointInDays = Convert.ToInt32(this.Text);
-        }
-
-        private void textBoxProfit_TextChanged(object sender, EventArgs e)
-        {
-            rulesWaitingProfit = Convert.ToInt32(this.Text);
-        }
-
-        private void textBoxNumOfRed_TextChanged(object sender, EventArgs e)
-        {
-            if (((TextBox)sender).Text != "")
-            {
-                rulesNumOfRed = Convert.ToInt32(((TextBox)sender).Text);
-            }
         }
     }
 }

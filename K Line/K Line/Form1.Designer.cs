@@ -244,7 +244,6 @@
             this.textBoxNumOfRed.TabIndex = 30;
             this.textBoxNumOfRed.Text = "3";
             this.textBoxNumOfRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxNumOfRed.TextChanged += new System.EventHandler(this.textBoxNumOfRed_TextChanged);
             // 
             // textBoxWaitingDays
             // 
@@ -254,7 +253,6 @@
             this.textBoxWaitingDays.TabIndex = 31;
             this.textBoxWaitingDays.Text = "30";
             this.textBoxWaitingDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxWaitingDays.TextChanged += new System.EventHandler(this.textBoxWaitingDays_TextChanged);
             // 
             // textBoxProfit
             // 
@@ -264,7 +262,6 @@
             this.textBoxProfit.TabIndex = 32;
             this.textBoxProfit.Text = "10";
             this.textBoxProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxProfit.TextChanged += new System.EventHandler(this.textBoxProfit_TextChanged);
             // 
             // textBoxLowPointPeriod
             // 
@@ -274,7 +271,6 @@
             this.textBoxLowPointPeriod.TabIndex = 33;
             this.textBoxLowPointPeriod.Text = "20";
             this.textBoxLowPointPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxLowPointPeriod.TextChanged += new System.EventHandler(this.textBoxLowPointPeriod_TextChanged);
             // 
             // label2
             // 
