@@ -15,10 +15,14 @@ namespace K_Line
         String endMonth;
         String endYear;
         WebClient Client = new WebClient();
-        int rulesLowPointInDays = 10;
-        int rulesNumOfRed = 3;
-        int rulesWaitingDays = 30;
-        double rulesWaitingProfit = 3;
+        
+        // rules parameter set by user
+        int rulesNumOfRed;
+        double rulesWaitingProfit;
+        int rulesWaitingDays;
+        int rulesLowPointInDays;
+        double rulesWilliam;
+
         int totalStickPatternFound = 0;
         int totalProfitMatchFound = 0;
 
@@ -69,7 +73,7 @@ namespace K_Line
 
                     if (currentNumOfRed >= rulesNumOfRed)
                     {
-                        MessageTextBox.AppendText(file.Name + ": found a 3 red @ " + split[0] + "\n");
+                        // MessageTextBox.AppendText(file.Name + ": found a 3 red @ " + split[0] + "\n");
 
                         double buyInPrice = currentClosePrice;
                         DateTime buyInDay = DateTime.Parse(split[0]);
@@ -81,7 +85,7 @@ namespace K_Line
 
                             if (examDay.Subtract(buyInDay).Days >= rulesWaitingDays)
                             {
-                                MessageTextBox.AppendText("虧錢!\n");
+                                // MessageTextBox.AppendText("虧錢!\n");
                                 break;
                             }
                             else
@@ -90,7 +94,7 @@ namespace K_Line
 
                                 if (examClosePrice >= buyInPrice * (1 + rulesWaitingProfit/100))
                                 {
-                                    MessageTextBox.AppendText("賺錢!\n");
+                                    // MessageTextBox.AppendText("賺錢!\n");
                                     totalProfitMatchFound++;
                                     break;
                                 }
@@ -120,18 +124,37 @@ namespace K_Line
 
         private void Process_Click(object sender, EventArgs e)
         {
-            DirectoryInfo dir = new DirectoryInfo(folderBrowserDialog.SelectedPath);
+            // check and then read in rules settings
+            if (textBoxNumOfRed.Text == "" || textBoxWaitingDays.Text == "" || textBoxProfit.Text == ""
+                || textBoxLowPointPeriod.Text == "" || downloadDirTextBox.Text == "")
+            {
+                MessageBox.Show("Please input valid Stock Files Foler and Rules Setting.\n");
+                return;
+            }
+            else
+            {
+                rulesNumOfRed = Convert.ToInt32(textBoxNumOfRed.Text);
+                rulesWaitingProfit = Convert.ToDouble(textBoxProfit.Text);
+                rulesWaitingDays = Convert.ToInt32(textBoxWaitingDays.Text);
+                rulesLowPointInDays = Convert.ToInt32(textBoxLowPointPeriod.Text);
+                rulesWilliam = Convert.ToDouble(textBoxWilliam.Text);
+            }
+
+            DirectoryInfo dir;
             FileInfo[] files = null;
 
-            // read in stock data files to be processed.
             try
             {
+                dir = new DirectoryInfo(folderBrowserDialog.SelectedPath);
                 files = dir.GetFiles("*.csv");
             }
-            catch (UnauthorizedAccessException)
+            catch (Exception)
             {
                 MessageBox.Show("Cannot open the file(s) in the selected folder.\n");
             }
+
+            totalProfitMatchFound = 0;
+            totalStickPatternFound = 0;
 
             // check and then read in rules settings
             if (textBoxNumOfRed.Text == "" || textBoxWaitingDays.Text == "" || textBoxProfit.Text == "" || textBoxLowPointPeriod.Text == "")
@@ -155,13 +178,17 @@ namespace K_Line
 
                     if (!ProcessStockFile(fi))
                     {
-                        MessageTextBox.AppendText("Error: processing " + fi.Name + "failed.\n"); 
+                        MessageTextBox.AppendText("Error: processing " + fi.Name + "failed.\n");
                     }
                 }
             }
 
-            MessageTextBox.AppendText("Totally " + totalStickPatternFound + " three-red is found.\n");
-            MessageTextBox.AppendText("Totally " + totalProfitMatchFound + " profit match is found.\n"); 
+            MessageTextBox.AppendText("[Rule] #Red = " + rulesNumOfRed + ", Profit = "
+                + rulesWaitingProfit + "%, Wait Days = " + rulesWaitingDays + ", Period = " + rulesLowPointInDays + "\n");
+            MessageTextBox.AppendText("共有 " + totalStickPatternFound + " 個連三紅, ");
+            MessageTextBox.AppendText("其中共 " + totalProfitMatchFound + " 個符合獲利條件.\n");
+            MessageTextBox.AppendText("成功率 = " + Convert.ToString(100.00 * (double)totalProfitMatchFound / (double)totalStickPatternFound) + "%\n");
+            MessageTextBox.AppendText("------------------------------------------------------------\n");
         }
 
         private void radioButtonImportFile_CheckedChanged(object sender, EventArgs e)
