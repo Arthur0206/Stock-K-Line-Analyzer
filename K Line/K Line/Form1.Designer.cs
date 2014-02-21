@@ -52,19 +52,21 @@
             this.textBoxProfit = new System.Windows.Forms.TextBox();
             this.textBoxLowPointPeriod = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxWilliam = new System.Windows.Forms.CheckBox();
+            this.checkBoxWaitingDays = new System.Windows.Forms.CheckBox();
+            this.checkBoxProfit = new System.Windows.Forms.CheckBox();
+            this.checkBoxLowPointPeriod = new System.Windows.Forms.CheckBox();
             this.textBoxWilliam = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxDetailLog = new System.Windows.Forms.CheckBox();
+            this.checkBoxStopLoss = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonProcess
             // 
-            this.buttonProcess.Location = new System.Drawing.Point(429, 796);
+            this.buttonProcess.Location = new System.Drawing.Point(429, 703);
             this.buttonProcess.Name = "buttonProcess";
             this.buttonProcess.Size = new System.Drawing.Size(96, 61);
             this.buttonProcess.TabIndex = 0;
@@ -76,7 +78,7 @@
             // 
             this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startDate.Location = new System.Drawing.Point(13, 62);
+            this.startDate.Location = new System.Drawing.Point(13, 54);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(240, 23);
             this.startDate.TabIndex = 13;
@@ -86,7 +88,7 @@
             // 
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endDate.Location = new System.Drawing.Point(273, 62);
+            this.endDate.Location = new System.Drawing.Point(273, 54);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(240, 23);
             this.endDate.TabIndex = 14;
@@ -96,7 +98,7 @@
             // 
             this.startLabel.AutoSize = true;
             this.startLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startLabel.Location = new System.Drawing.Point(10, 36);
+            this.startLabel.Location = new System.Drawing.Point(10, 28);
             this.startLabel.Name = "startLabel";
             this.startLabel.Size = new System.Drawing.Size(76, 17);
             this.startLabel.TabIndex = 15;
@@ -106,7 +108,7 @@
             // 
             this.endLabel.AutoSize = true;
             this.endLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endLabel.Location = new System.Drawing.Point(270, 36);
+            this.endLabel.Location = new System.Drawing.Point(270, 28);
             this.endLabel.Name = "endLabel";
             this.endLabel.Size = new System.Drawing.Size(71, 17);
             this.endLabel.TabIndex = 16;
@@ -115,7 +117,7 @@
             // radioButtonImportFile
             // 
             this.radioButtonImportFile.AutoSize = true;
-            this.radioButtonImportFile.Location = new System.Drawing.Point(13, 105);
+            this.radioButtonImportFile.Location = new System.Drawing.Point(13, 91);
             this.radioButtonImportFile.Name = "radioButtonImportFile";
             this.radioButtonImportFile.Size = new System.Drawing.Size(255, 21);
             this.radioButtonImportFile.TabIndex = 18;
@@ -127,7 +129,7 @@
             // radioButtonTypeIn
             // 
             this.radioButtonTypeIn.AutoSize = true;
-            this.radioButtonTypeIn.Location = new System.Drawing.Point(13, 177);
+            this.radioButtonTypeIn.Location = new System.Drawing.Point(13, 161);
             this.radioButtonTypeIn.Name = "radioButtonTypeIn";
             this.radioButtonTypeIn.Size = new System.Drawing.Size(188, 21);
             this.radioButtonTypeIn.TabIndex = 19;
@@ -139,7 +141,7 @@
             // stockListFileTextBox
             // 
             this.stockListFileTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockListFileTextBox.Location = new System.Drawing.Point(13, 135);
+            this.stockListFileTextBox.Location = new System.Drawing.Point(13, 121);
             this.stockListFileTextBox.Name = "stockListFileTextBox";
             this.stockListFileTextBox.Size = new System.Drawing.Size(383, 23);
             this.stockListFileTextBox.TabIndex = 20;
@@ -147,14 +149,14 @@
             // StockNameTextBox
             // 
             this.StockNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockNameTextBox.Location = new System.Drawing.Point(13, 207);
+            this.StockNameTextBox.Location = new System.Drawing.Point(13, 191);
             this.StockNameTextBox.Name = "StockNameTextBox";
             this.StockNameTextBox.Size = new System.Drawing.Size(383, 23);
             this.StockNameTextBox.TabIndex = 21;
             // 
             // buttonSelectStockListFile
             // 
-            this.buttonSelectStockListFile.Location = new System.Drawing.Point(417, 132);
+            this.buttonSelectStockListFile.Location = new System.Drawing.Point(417, 118);
             this.buttonSelectStockListFile.Name = "buttonSelectStockListFile";
             this.buttonSelectStockListFile.Size = new System.Drawing.Size(96, 28);
             this.buttonSelectStockListFile.TabIndex = 22;
@@ -164,17 +166,17 @@
             // 
             // MessageTextBox
             // 
-            this.MessageTextBox.Location = new System.Drawing.Point(25, 545);
+            this.MessageTextBox.Location = new System.Drawing.Point(25, 533);
             this.MessageTextBox.Multiline = true;
             this.MessageTextBox.Name = "MessageTextBox";
             this.MessageTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.MessageTextBox.Size = new System.Drawing.Size(383, 312);
+            this.MessageTextBox.Size = new System.Drawing.Size(383, 231);
             this.MessageTextBox.TabIndex = 23;
             // 
             // downloadDirTextBox
             // 
             this.downloadDirTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.downloadDirTextBox.Location = new System.Drawing.Point(25, 312);
+            this.downloadDirTextBox.Location = new System.Drawing.Point(25, 281);
             this.downloadDirTextBox.Name = "downloadDirTextBox";
             this.downloadDirTextBox.Size = new System.Drawing.Size(383, 23);
             this.downloadDirTextBox.TabIndex = 24;
@@ -183,7 +185,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 286);
+            this.label1.Location = new System.Drawing.Point(22, 255);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 25;
@@ -191,7 +193,7 @@
             // 
             // buttonSelectDownloadedFiles
             // 
-            this.buttonSelectDownloadedFiles.Location = new System.Drawing.Point(429, 309);
+            this.buttonSelectDownloadedFiles.Location = new System.Drawing.Point(429, 278);
             this.buttonSelectDownloadedFiles.Name = "buttonSelectDownloadedFiles";
             this.buttonSelectDownloadedFiles.Size = new System.Drawing.Size(96, 28);
             this.buttonSelectDownloadedFiles.TabIndex = 26;
@@ -201,7 +203,7 @@
             // 
             // buttonDownload
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(429, 727);
+            this.buttonDownload.Location = new System.Drawing.Point(429, 634);
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(96, 61);
             this.buttonDownload.TabIndex = 27;
@@ -223,14 +225,14 @@
             this.groupBox1.Controls.Add(this.stockListFileTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(525, 254);
+            this.groupBox1.Size = new System.Drawing.Size(525, 229);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Download Source Option";
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(429, 657);
+            this.buttonClear.Location = new System.Drawing.Point(429, 564);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(96, 61);
             this.buttonClear.TabIndex = 29;
@@ -240,25 +242,26 @@
             // 
             // textBoxNumOfRed
             // 
-            this.textBoxNumOfRed.Location = new System.Drawing.Point(14, 60);
+            this.textBoxNumOfRed.Enabled = false;
+            this.textBoxNumOfRed.Location = new System.Drawing.Point(16, 59);
             this.textBoxNumOfRed.Name = "textBoxNumOfRed";
-            this.textBoxNumOfRed.Size = new System.Drawing.Size(113, 22);
+            this.textBoxNumOfRed.Size = new System.Drawing.Size(80, 22);
             this.textBoxNumOfRed.TabIndex = 30;
             this.textBoxNumOfRed.Text = "3";
             this.textBoxNumOfRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxWaitingDays
             // 
-            this.textBoxWaitingDays.Location = new System.Drawing.Point(272, 60);
+            this.textBoxWaitingDays.Location = new System.Drawing.Point(365, 59);
             this.textBoxWaitingDays.Name = "textBoxWaitingDays";
-            this.textBoxWaitingDays.Size = new System.Drawing.Size(113, 22);
+            this.textBoxWaitingDays.Size = new System.Drawing.Size(142, 22);
             this.textBoxWaitingDays.TabIndex = 31;
             this.textBoxWaitingDays.Text = "30";
             this.textBoxWaitingDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxProfit
             // 
-            this.textBoxProfit.Location = new System.Drawing.Point(143, 60);
+            this.textBoxProfit.Location = new System.Drawing.Point(238, 59);
             this.textBoxProfit.Name = "textBoxProfit";
             this.textBoxProfit.Size = new System.Drawing.Size(113, 22);
             this.textBoxProfit.TabIndex = 32;
@@ -267,9 +270,10 @@
             // 
             // textBoxLowPointPeriod
             // 
-            this.textBoxLowPointPeriod.Location = new System.Drawing.Point(401, 60);
+            this.textBoxLowPointPeriod.Enabled = false;
+            this.textBoxLowPointPeriod.Location = new System.Drawing.Point(379, 127);
             this.textBoxLowPointPeriod.Name = "textBoxLowPointPeriod";
-            this.textBoxLowPointPeriod.Size = new System.Drawing.Size(113, 22);
+            this.textBoxLowPointPeriod.Size = new System.Drawing.Size(128, 22);
             this.textBoxLowPointPeriod.TabIndex = 33;
             this.textBoxLowPointPeriod.Text = "10";
             this.textBoxLowPointPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -278,87 +282,121 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 33);
+            this.label2.Location = new System.Drawing.Point(13, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 34;
             this.label2.Text = "Num of Red";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(398, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 17);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Low Point Period";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(269, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Waiting Days";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(140, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Profit (%)";
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.checkBoxStopLoss);
+            this.groupBox2.Controls.Add(this.checkBoxWilliam);
+            this.groupBox2.Controls.Add(this.checkBoxWaitingDays);
+            this.groupBox2.Controls.Add(this.checkBoxProfit);
+            this.groupBox2.Controls.Add(this.checkBoxLowPointPeriod);
             this.groupBox2.Controls.Add(this.textBoxWilliam);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBoxNumOfRed);
             this.groupBox2.Controls.Add(this.textBoxWaitingDays);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBoxProfit);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.textBoxLowPointPeriod);
-            this.groupBox2.Location = new System.Drawing.Point(12, 354);
+            this.groupBox2.Location = new System.Drawing.Point(12, 317);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(525, 169);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rules";
             // 
+            // checkBoxWilliam
+            // 
+            this.checkBoxWilliam.AutoSize = true;
+            this.checkBoxWilliam.Checked = true;
+            this.checkBoxWilliam.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWilliam.Location = new System.Drawing.Point(110, 31);
+            this.checkBoxWilliam.Name = "checkBoxWilliam";
+            this.checkBoxWilliam.Size = new System.Drawing.Size(100, 21);
+            this.checkBoxWilliam.TabIndex = 42;
+            this.checkBoxWilliam.Text = "William (%)";
+            this.checkBoxWilliam.UseVisualStyleBackColor = true;
+            this.checkBoxWilliam.CheckedChanged += new System.EventHandler(this.checkBoxWilliam_CheckedChanged);
+            // 
+            // checkBoxWaitingDays
+            // 
+            this.checkBoxWaitingDays.AutoSize = true;
+            this.checkBoxWaitingDays.Checked = true;
+            this.checkBoxWaitingDays.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxWaitingDays.Location = new System.Drawing.Point(365, 30);
+            this.checkBoxWaitingDays.Name = "checkBoxWaitingDays";
+            this.checkBoxWaitingDays.Size = new System.Drawing.Size(142, 21);
+            this.checkBoxWaitingDays.TabIndex = 41;
+            this.checkBoxWaitingDays.Text = "Max Waiting Days";
+            this.checkBoxWaitingDays.UseVisualStyleBackColor = true;
+            this.checkBoxWaitingDays.CheckedChanged += new System.EventHandler(this.checkBoxWaitingDays_CheckedChanged);
+            // 
+            // checkBoxProfit
+            // 
+            this.checkBoxProfit.AutoSize = true;
+            this.checkBoxProfit.Checked = true;
+            this.checkBoxProfit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxProfit.Location = new System.Drawing.Point(238, 31);
+            this.checkBoxProfit.Name = "checkBoxProfit";
+            this.checkBoxProfit.Size = new System.Drawing.Size(89, 21);
+            this.checkBoxProfit.TabIndex = 40;
+            this.checkBoxProfit.Text = "Profit (%)";
+            this.checkBoxProfit.UseVisualStyleBackColor = true;
+            this.checkBoxProfit.CheckedChanged += new System.EventHandler(this.checkBoxProfit_CheckedChanged);
+            // 
+            // checkBoxLowPointPeriod
+            // 
+            this.checkBoxLowPointPeriod.AutoSize = true;
+            this.checkBoxLowPointPeriod.Enabled = false;
+            this.checkBoxLowPointPeriod.Location = new System.Drawing.Point(379, 99);
+            this.checkBoxLowPointPeriod.Name = "checkBoxLowPointPeriod";
+            this.checkBoxLowPointPeriod.Size = new System.Drawing.Size(127, 21);
+            this.checkBoxLowPointPeriod.TabIndex = 30;
+            this.checkBoxLowPointPeriod.Text = "Low Point Days";
+            this.checkBoxLowPointPeriod.UseVisualStyleBackColor = true;
+            // 
             // textBoxWilliam
             // 
-            this.textBoxWilliam.Location = new System.Drawing.Point(14, 128);
+            this.textBoxWilliam.Location = new System.Drawing.Point(110, 59);
             this.textBoxWilliam.Name = "textBoxWilliam";
             this.textBoxWilliam.Size = new System.Drawing.Size(113, 22);
             this.textBoxWilliam.TabIndex = 38;
             this.textBoxWilliam.Text = "70";
             this.textBoxWilliam.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label6
+            // checkBoxDetailLog
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 101);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
-            this.label6.TabIndex = 39;
-            this.label6.Text = "William %";
+            this.checkBoxDetailLog.AutoSize = true;
+            this.checkBoxDetailLog.Location = new System.Drawing.Point(25, 499);
+            this.checkBoxDetailLog.Name = "checkBoxDetailLog";
+            this.checkBoxDetailLog.Size = new System.Drawing.Size(148, 21);
+            this.checkBoxDetailLog.TabIndex = 30;
+            this.checkBoxDetailLog.Text = "Show Detailed Log";
+            this.checkBoxDetailLog.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStopLoss
+            // 
+            this.checkBoxStopLoss.AutoSize = true;
+            this.checkBoxStopLoss.Checked = true;
+            this.checkBoxStopLoss.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStopLoss.Location = new System.Drawing.Point(16, 100);
+            this.checkBoxStopLoss.Name = "checkBoxStopLoss";
+            this.checkBoxStopLoss.Size = new System.Drawing.Size(129, 21);
+            this.checkBoxStopLoss.TabIndex = 43;
+            this.checkBoxStopLoss.Text = "Stop Loss Point";
+            this.checkBoxStopLoss.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(548, 875);
+            this.ClientSize = new System.Drawing.Size(548, 785);
+            this.Controls.Add(this.checkBoxDetailLog);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.groupBox1);
@@ -408,12 +446,14 @@
         private System.Windows.Forms.TextBox textBoxProfit;
         private System.Windows.Forms.TextBox textBoxLowPointPeriod;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBoxWilliam;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxLowPointPeriod;
+        private System.Windows.Forms.CheckBox checkBoxWilliam;
+        private System.Windows.Forms.CheckBox checkBoxWaitingDays;
+        private System.Windows.Forms.CheckBox checkBoxProfit;
+        private System.Windows.Forms.CheckBox checkBoxDetailLog;
+        private System.Windows.Forms.CheckBox checkBoxStopLoss;
     }
 }
 
