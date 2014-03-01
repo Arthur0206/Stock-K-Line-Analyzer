@@ -48,7 +48,7 @@ namespace K_Line
             string[] readText = File.ReadAllLines(file.FullName);
 
             // check one line in the file. From bottom to top.
-            for (int i = readText.Length - 3; i - 2 > 0; i--)
+            for (int i = readText.Length - 2; i - 2 > 0; i--)
             {
                 // Date,Open,High,Low,Close,Volume,Adj Close
                 //   0   1    2    3    4     5       6
@@ -189,7 +189,7 @@ namespace K_Line
                             {
                                 totalProfitMatchFound++;
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 超過預期利潤\n");
-                                if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賺 " + profit + "%" + "\n");
+                                if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("當天最高價 profit = " + profit + "%" + " > " + rulesWaitingProfit + "%" + "\n");
 
                                 break;
                             }
