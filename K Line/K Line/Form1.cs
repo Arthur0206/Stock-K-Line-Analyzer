@@ -214,19 +214,38 @@ namespace K_Line
                             double cur_day_lowest_price = Convert.ToDouble(cur_day_data[3]);
                             double buy_in_price = Convert.ToDouble(buy_in_data[1]);
 
-                            // if current day's lowest price is less than buy in price, sell it on buy in price. assume transaction fee is 1%.
-                            if (cur_day_lowest_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
-                            {
-                                totalStopLossNum++;
+                            double first_day_open_price = Convert.ToDouble(first_red_data[1]);
+                            double cur_day_close_price = Convert.ToDouble(cur_day_data[4]);
 
-                                if (cur_day_open_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
-                                    totalStopLossProfit += (cur_day_open_price - buy_in_price) / buy_in_price;
-                                else
-                                    totalStopLossProfit += rulesStopLossPoint;
-                                
-                                if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 降至買進價\n");
-                                if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("本日最低: " + cur_day_data[3] + ", 本日最高: " + cur_day_data[2] + ", 買進價: " + buy_in_data[1] + "\n");
-                                break;
+                            if (textBoxStopLossPoint.Text == "") //use rule: any PC < PO1
+                            {
+                                //if any Day's close price < first red open price, sell it on next day.
+                                if (cur_day_close_price < first_day_open_price)
+                                {
+                                    totalStopLossNum++;
+                                    totalStopLossProfit += (cur_day_close_price - buy_in_price) / buy_in_price;
+
+                                    break;
+                                }
+                            }
+                            else //use rule: any profit < stop loss point prifit
+                            {
+                                rulesStopLossPoint = Convert.ToDouble(textBoxStopLossPoint.Text);
+
+                                // if current day's lowest price is less than buy in price, sell it on buy in price. assume transaction fee is 1%.
+                                if (cur_day_lowest_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
+                                {
+                                    totalStopLossNum++;
+
+                                    if (cur_day_open_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
+                                        totalStopLossProfit += (cur_day_open_price - buy_in_price) / buy_in_price;
+                                    else
+                                        totalStopLossProfit += rulesStopLossPoint;
+    
+                                    if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 降至買進價\n");
+                                    if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("本日最低: " + cur_day_data[3] + ", 本日最高: " + cur_day_data[2] + ", 買進價: " + buy_in_data[1] + "\n");
+                                    break;
+                                }
                             }
                         }
                     }
@@ -260,7 +279,7 @@ namespace K_Line
                 || (checkBoxProfit.Checked && textBoxProfit.Text == "")
                 || (checkBoxLowPointPeriod.Checked && textBoxLowPointPeriod.Text == "")
                 || (checkBoxWilliam.Checked && textBoxWilliam.Text == "")
-                || (checkBoxStopLoss.Checked && textBoxStopLossPoint.Text == "")
+            //  || (checkBoxStopLoss.Checked && textBoxStopLossPoint.Text == "")
                 || (checkBoxLeastHoldDays.Checked && textBoxLeastHoldDays.Text == "")
                 || downloadDirTextBox.Text == "")
             {
@@ -274,7 +293,7 @@ namespace K_Line
                 rulesMaxHoldDays = Convert.ToInt32(textBoxMaxHoldDays.Text);
                 rulesLowPointInDays = Convert.ToInt32(textBoxLowPointPeriod.Text);
                 rulesWilliam = Convert.ToDouble(textBoxWilliam.Text);
-                rulesStopLossPoint = Convert.ToDouble(textBoxStopLossPoint.Text);
+                //rulesStopLossPoint = Convert.ToDouble(textBoxStopLossPoint.Text);
                 rulesLeastHoldDays = Convert.ToInt32(textBoxLeastHoldDays.Text);
             }
 

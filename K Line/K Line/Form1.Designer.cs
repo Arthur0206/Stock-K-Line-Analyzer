@@ -259,7 +259,7 @@
             this.textBoxMaxHoldDays.Name = "textBoxMaxHoldDays";
             this.textBoxMaxHoldDays.Size = new System.Drawing.Size(142, 22);
             this.textBoxMaxHoldDays.TabIndex = 31;
-            this.textBoxMaxHoldDays.Text = "30";
+            this.textBoxMaxHoldDays.Text = "60";
             this.textBoxMaxHoldDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxProfit
@@ -268,7 +268,7 @@
             this.textBoxProfit.Name = "textBoxProfit";
             this.textBoxProfit.Size = new System.Drawing.Size(113, 22);
             this.textBoxProfit.TabIndex = 32;
-            this.textBoxProfit.Text = "10";
+            this.textBoxProfit.Text = "30";
             this.textBoxProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxLowPointPeriod
@@ -343,7 +343,6 @@
             this.textBoxStopLossPoint.Name = "textBoxStopLossPoint";
             this.textBoxStopLossPoint.Size = new System.Drawing.Size(145, 22);
             this.textBoxStopLossPoint.TabIndex = 44;
-            this.textBoxStopLossPoint.Text = "2";
             this.textBoxStopLossPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // checkBoxStopLoss
