@@ -48,18 +48,21 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxNumOfRed = new System.Windows.Forms.TextBox();
-            this.textBoxWaitingDays = new System.Windows.Forms.TextBox();
+            this.textBoxMaxHoldDays = new System.Windows.Forms.TextBox();
             this.textBoxProfit = new System.Windows.Forms.TextBox();
             this.textBoxLowPointPeriod = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBoxStopLoss = new System.Windows.Forms.CheckBox();
             this.checkBoxWilliam = new System.Windows.Forms.CheckBox();
-            this.checkBoxWaitingDays = new System.Windows.Forms.CheckBox();
+            this.checkBoxMaxHoldDays = new System.Windows.Forms.CheckBox();
             this.checkBoxProfit = new System.Windows.Forms.CheckBox();
             this.checkBoxLowPointPeriod = new System.Windows.Forms.CheckBox();
             this.textBoxWilliam = new System.Windows.Forms.TextBox();
             this.checkBoxDetailLog = new System.Windows.Forms.CheckBox();
-            this.checkBoxStopLoss = new System.Windows.Forms.CheckBox();
+            this.textBoxStopLossPoint = new System.Windows.Forms.TextBox();
+            this.checkBoxLeastHoldDays = new System.Windows.Forms.CheckBox();
+            this.textBoxLeastHoldDays = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -250,14 +253,14 @@
             this.textBoxNumOfRed.Text = "3";
             this.textBoxNumOfRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBoxWaitingDays
+            // textBoxMaxHoldDays
             // 
-            this.textBoxWaitingDays.Location = new System.Drawing.Point(365, 59);
-            this.textBoxWaitingDays.Name = "textBoxWaitingDays";
-            this.textBoxWaitingDays.Size = new System.Drawing.Size(142, 22);
-            this.textBoxWaitingDays.TabIndex = 31;
-            this.textBoxWaitingDays.Text = "30";
-            this.textBoxWaitingDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMaxHoldDays.Location = new System.Drawing.Point(365, 59);
+            this.textBoxMaxHoldDays.Name = "textBoxMaxHoldDays";
+            this.textBoxMaxHoldDays.Size = new System.Drawing.Size(142, 22);
+            this.textBoxMaxHoldDays.TabIndex = 31;
+            this.textBoxMaxHoldDays.Text = "30";
+            this.textBoxMaxHoldDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxProfit
             // 
@@ -291,14 +294,17 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.textBoxLeastHoldDays);
+            this.groupBox2.Controls.Add(this.checkBoxLeastHoldDays);
+            this.groupBox2.Controls.Add(this.textBoxStopLossPoint);
             this.groupBox2.Controls.Add(this.checkBoxStopLoss);
             this.groupBox2.Controls.Add(this.checkBoxWilliam);
-            this.groupBox2.Controls.Add(this.checkBoxWaitingDays);
+            this.groupBox2.Controls.Add(this.checkBoxMaxHoldDays);
             this.groupBox2.Controls.Add(this.checkBoxProfit);
             this.groupBox2.Controls.Add(this.checkBoxLowPointPeriod);
             this.groupBox2.Controls.Add(this.textBoxWilliam);
             this.groupBox2.Controls.Add(this.textBoxNumOfRed);
-            this.groupBox2.Controls.Add(this.textBoxWaitingDays);
+            this.groupBox2.Controls.Add(this.textBoxMaxHoldDays);
             this.groupBox2.Controls.Add(this.textBoxProfit);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.textBoxLowPointPeriod);
@@ -308,6 +314,19 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rules";
+            // 
+            // checkBoxStopLoss
+            // 
+            this.checkBoxStopLoss.AutoSize = true;
+            this.checkBoxStopLoss.Checked = true;
+            this.checkBoxStopLoss.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStopLoss.Location = new System.Drawing.Point(16, 99);
+            this.checkBoxStopLoss.Name = "checkBoxStopLoss";
+            this.checkBoxStopLoss.Size = new System.Drawing.Size(155, 21);
+            this.checkBoxStopLoss.TabIndex = 43;
+            this.checkBoxStopLoss.Text = "Stop Loss Point (%)";
+            this.checkBoxStopLoss.UseVisualStyleBackColor = true;
+            this.checkBoxStopLoss.CheckedChanged += new System.EventHandler(this.checkBoxStopLoss_CheckedChanged);
             // 
             // checkBoxWilliam
             // 
@@ -322,18 +341,18 @@
             this.checkBoxWilliam.UseVisualStyleBackColor = true;
             this.checkBoxWilliam.CheckedChanged += new System.EventHandler(this.checkBoxWilliam_CheckedChanged);
             // 
-            // checkBoxWaitingDays
+            // checkBoxMaxHoldDays
             // 
-            this.checkBoxWaitingDays.AutoSize = true;
-            this.checkBoxWaitingDays.Checked = true;
-            this.checkBoxWaitingDays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWaitingDays.Location = new System.Drawing.Point(365, 30);
-            this.checkBoxWaitingDays.Name = "checkBoxWaitingDays";
-            this.checkBoxWaitingDays.Size = new System.Drawing.Size(142, 21);
-            this.checkBoxWaitingDays.TabIndex = 41;
-            this.checkBoxWaitingDays.Text = "Max Waiting Days";
-            this.checkBoxWaitingDays.UseVisualStyleBackColor = true;
-            this.checkBoxWaitingDays.CheckedChanged += new System.EventHandler(this.checkBoxWaitingDays_CheckedChanged);
+            this.checkBoxMaxHoldDays.AutoSize = true;
+            this.checkBoxMaxHoldDays.Checked = true;
+            this.checkBoxMaxHoldDays.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMaxHoldDays.Location = new System.Drawing.Point(365, 30);
+            this.checkBoxMaxHoldDays.Name = "checkBoxMaxHoldDays";
+            this.checkBoxMaxHoldDays.Size = new System.Drawing.Size(124, 21);
+            this.checkBoxMaxHoldDays.TabIndex = 41;
+            this.checkBoxMaxHoldDays.Text = "Max Hold Days";
+            this.checkBoxMaxHoldDays.UseVisualStyleBackColor = true;
+            this.checkBoxMaxHoldDays.CheckedChanged += new System.EventHandler(this.checkBoxMaxHoldDays_CheckedChanged);
             // 
             // checkBoxProfit
             // 
@@ -378,17 +397,36 @@
             this.checkBoxDetailLog.Text = "Show Detailed Log";
             this.checkBoxDetailLog.UseVisualStyleBackColor = true;
             // 
-            // checkBoxStopLoss
+            // textBoxStopLossPoint
             // 
-            this.checkBoxStopLoss.AutoSize = true;
-            this.checkBoxStopLoss.Checked = true;
-            this.checkBoxStopLoss.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStopLoss.Location = new System.Drawing.Point(16, 100);
-            this.checkBoxStopLoss.Name = "checkBoxStopLoss";
-            this.checkBoxStopLoss.Size = new System.Drawing.Size(129, 21);
-            this.checkBoxStopLoss.TabIndex = 43;
-            this.checkBoxStopLoss.Text = "Stop Loss Point";
-            this.checkBoxStopLoss.UseVisualStyleBackColor = true;
+            this.textBoxStopLossPoint.Location = new System.Drawing.Point(16, 127);
+            this.textBoxStopLossPoint.Name = "textBoxStopLossPoint";
+            this.textBoxStopLossPoint.Size = new System.Drawing.Size(145, 22);
+            this.textBoxStopLossPoint.TabIndex = 44;
+            this.textBoxStopLossPoint.Text = "1";
+            this.textBoxStopLossPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // checkBoxLeastHoldDays
+            // 
+            this.checkBoxLeastHoldDays.AutoSize = true;
+            this.checkBoxLeastHoldDays.Checked = true;
+            this.checkBoxLeastHoldDays.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLeastHoldDays.Location = new System.Drawing.Point(182, 99);
+            this.checkBoxLeastHoldDays.Name = "checkBoxLeastHoldDays";
+            this.checkBoxLeastHoldDays.Size = new System.Drawing.Size(134, 21);
+            this.checkBoxLeastHoldDays.TabIndex = 44;
+            this.checkBoxLeastHoldDays.Text = "Least Hold Days";
+            this.checkBoxLeastHoldDays.UseVisualStyleBackColor = true;
+            this.checkBoxLeastHoldDays.CheckedChanged += new System.EventHandler(this.checkBoxLeastHoldDays_CheckedChanged);
+            // 
+            // textBoxLeastHoldDays
+            // 
+            this.textBoxLeastHoldDays.Location = new System.Drawing.Point(182, 127);
+            this.textBoxLeastHoldDays.Name = "textBoxLeastHoldDays";
+            this.textBoxLeastHoldDays.Size = new System.Drawing.Size(128, 22);
+            this.textBoxLeastHoldDays.TabIndex = 45;
+            this.textBoxLeastHoldDays.Text = "1";
+            this.textBoxLeastHoldDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
@@ -442,7 +480,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBoxNumOfRed;
-        private System.Windows.Forms.TextBox textBoxWaitingDays;
+        private System.Windows.Forms.TextBox textBoxMaxHoldDays;
         private System.Windows.Forms.TextBox textBoxProfit;
         private System.Windows.Forms.TextBox textBoxLowPointPeriod;
         private System.Windows.Forms.Label label2;
@@ -450,10 +488,13 @@
         private System.Windows.Forms.TextBox textBoxWilliam;
         private System.Windows.Forms.CheckBox checkBoxLowPointPeriod;
         private System.Windows.Forms.CheckBox checkBoxWilliam;
-        private System.Windows.Forms.CheckBox checkBoxWaitingDays;
+        private System.Windows.Forms.CheckBox checkBoxMaxHoldDays;
         private System.Windows.Forms.CheckBox checkBoxProfit;
         private System.Windows.Forms.CheckBox checkBoxDetailLog;
         private System.Windows.Forms.CheckBox checkBoxStopLoss;
+        private System.Windows.Forms.TextBox textBoxStopLossPoint;
+        private System.Windows.Forms.TextBox textBoxLeastHoldDays;
+        private System.Windows.Forms.CheckBox checkBoxLeastHoldDays;
     }
 }
 

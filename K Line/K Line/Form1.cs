@@ -19,9 +19,11 @@ namespace K_Line
         // rules parameter set by user
         int rulesNumOfRed;
         double rulesWaitingProfit;
-        int rulesWaitingDays;
+        int rulesMaxHoldDays;
         int rulesLowPointInDays;
+        int rulesLeastHoldDays;
         double rulesWilliam;
+        double rulesStopLossPoint;
 
         int totalStickPatternFound = 0;
         int totalProfitMatchFound = 0;
@@ -144,7 +146,7 @@ namespace K_Line
                 /****************************************************************************************************************/
                 try
                 {
-                    for (int j = i - 3; j >= 1; j--)
+                    for (int j = i - 3 - rulesLeastHoldDays; j >= 1; j--)
                     {
                         if (j == 1)
                         {
@@ -158,9 +160,9 @@ namespace K_Line
                         string[] cur_day_data = readText[j].Split(',');
 
                         // check if maximum waiting days has passed
-                        if (checkBoxWaitingDays.Checked)
+                        if (checkBoxMaxHoldDays.Checked)
                         {
-                            if (i - j >= rulesWaitingDays + 3)
+                            if (i - j >= rulesMaxHoldDays + 3)
                             {
                                 // verify we earn or loss money. if current day's open price is higher than buy in day's open price, then earn money.
                                 if (Convert.ToDouble(cur_day_data[1]) >= Convert.ToDouble(buy_in_data[1]))
@@ -199,12 +201,11 @@ namespace K_Line
                         if (checkBoxStopLoss.Checked)
                         {
                             // if current day's lowest price is less than buy in price, sell it on buy in price. assume transaction fee is 1%.
-                            if (Convert.ToDouble(cur_day_data[3]) <= Convert.ToDouble(buy_in_data[1]) * 1.01)
+                            if (Convert.ToDouble(cur_day_data[3]) <= Convert.ToDouble(buy_in_data[1]) * ((100.0 + rulesStopLossPoint) / 100))
                             {
                                 totalStickPatternFound--;
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 降至買進價\n");
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("本日最低: " + cur_day_data[3] + ", 本日最高: " + cur_day_data[2] + ", 買進價: " + buy_in_data[1] + "\n");
-
                                 break;
                             }
                         }
@@ -229,10 +230,12 @@ namespace K_Line
         {
             // check and then read in rules settings
             if (textBoxNumOfRed.Text == ""
-                || (checkBoxWaitingDays.Checked && textBoxWaitingDays.Text == "")
+                || (checkBoxMaxHoldDays.Checked && textBoxMaxHoldDays.Text == "")
                 || (checkBoxProfit.Checked && textBoxProfit.Text == "")
                 || (checkBoxLowPointPeriod.Checked && textBoxLowPointPeriod.Text == "")
                 || (checkBoxWilliam.Checked && textBoxWilliam.Text == "")
+                || (checkBoxStopLoss.Checked && textBoxStopLossPoint.Text == "")
+                || (checkBoxLeastHoldDays.Checked && textBoxLeastHoldDays.Text == "")
                 || downloadDirTextBox.Text == "")
             {
                 MessageBox.Show("Please input valid Stock Files Foler and Rules Setting.\n");
@@ -242,9 +245,11 @@ namespace K_Line
             {
                 rulesNumOfRed = Convert.ToInt32(textBoxNumOfRed.Text);
                 rulesWaitingProfit = Convert.ToDouble(textBoxProfit.Text);
-                rulesWaitingDays = Convert.ToInt32(textBoxWaitingDays.Text);
+                rulesMaxHoldDays = Convert.ToInt32(textBoxMaxHoldDays.Text);
                 rulesLowPointInDays = Convert.ToInt32(textBoxLowPointPeriod.Text);
                 rulesWilliam = Convert.ToDouble(textBoxWilliam.Text);
+                rulesStopLossPoint = Convert.ToDouble(textBoxStopLossPoint.Text);
+                rulesLeastHoldDays = Convert.ToInt32(textBoxLeastHoldDays.Text);
             }
 
             DirectoryInfo dir;
@@ -263,20 +268,6 @@ namespace K_Line
             totalProfitMatchFound = 0;
             totalStickPatternFound = 0;
 
-            // check and then read in rules settings
-            if (textBoxNumOfRed.Text == "" || textBoxWaitingDays.Text == "" || textBoxProfit.Text == "" || textBoxLowPointPeriod.Text == "")
-            {
-                MessageBox.Show("Please input valid Rules Setting.\n");
-                return;
-            }
-            else
-            {
-                rulesNumOfRed = Convert.ToInt32(textBoxNumOfRed.Text);
-                rulesWaitingDays = Convert.ToInt32(textBoxWaitingDays.Text);
-                rulesWaitingProfit = Convert.ToInt32(textBoxProfit.Text);
-                rulesLowPointInDays = Convert.ToInt32(textBoxLowPointPeriod.Text);
-            }
-
             if (files != null)
             {
                 foreach (FileInfo fi in files)
@@ -290,8 +281,21 @@ namespace K_Line
                 }
             }
 
-            MessageTextBox.AppendText("[Rule] #Red = " + rulesNumOfRed + ", Profit = "
-                + rulesWaitingProfit + "%, Wait Days = " + rulesWaitingDays + ", Period = " + rulesLowPointInDays + "\n");
+            MessageTextBox.AppendText("[Rule] #Red = " + rulesNumOfRed);
+
+            if (checkBoxProfit.Enabled)
+                MessageTextBox.AppendText(", Profit = " + rulesWaitingProfit);
+            if (checkBoxMaxHoldDays.Enabled)
+                MessageTextBox.AppendText(", MaxHoldDays = " + rulesMaxHoldDays);
+            if (checkBoxStopLoss.Enabled)
+                MessageTextBox.AppendText(", StopLoss = " + rulesStopLossPoint);
+            if (checkBoxLeastHoldDays.Enabled)
+                MessageTextBox.AppendText(", LeastHoldDays = " + rulesLeastHoldDays);
+            if (checkBoxLowPointPeriod.Enabled)
+                MessageTextBox.AppendText(", LowPointDays = " + rulesLowPointInDays);
+
+            MessageTextBox.AppendText("\n");
+
             MessageTextBox.AppendText("共有 " + totalStickPatternFound + " 個連三紅, ");
             MessageTextBox.AppendText("其中共 " + totalProfitMatchFound + " 個符合獲利條件.\n");
             MessageTextBox.AppendText("成功率 = " + Convert.ToString(100.00 * (double)totalProfitMatchFound / (double)totalStickPatternFound) + "%\n");
@@ -466,15 +470,15 @@ namespace K_Line
             totalProfitMatchFound = 0;
         }
 
-        private void checkBoxWaitingDays_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxMaxHoldDays_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.checkBoxWaitingDays.Checked)
+            if (this.checkBoxMaxHoldDays.Checked)
             {
-                textBoxWaitingDays.Enabled = true;
+                textBoxMaxHoldDays.Enabled = true;
             }
             else
             {
-                textBoxWaitingDays.Enabled = false;
+                textBoxMaxHoldDays.Enabled = false;
             }
         }
 
@@ -499,6 +503,30 @@ namespace K_Line
             else
             {
                 textBoxWilliam.Enabled = false;
+            }
+        }
+
+        private void checkBoxStopLoss_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxStopLoss.Checked)
+            {
+                textBoxStopLossPoint.Enabled = true;
+            }
+            else
+            {
+                textBoxStopLossPoint.Enabled = false;
+            }
+        }
+
+        private void checkBoxLeastHoldDays_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxLeastHoldDays.Checked)
+            {
+                textBoxLeastHoldDays.Enabled = true;
+            }
+            else
+            {
+                textBoxLeastHoldDays.Enabled = false;
             }
         }
     }
