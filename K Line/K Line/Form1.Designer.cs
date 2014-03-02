@@ -53,6 +53,9 @@
             this.textBoxLowPointPeriod = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxLeastHoldDays = new System.Windows.Forms.TextBox();
+            this.checkBoxLeastHoldDays = new System.Windows.Forms.CheckBox();
+            this.textBoxStopLossPoint = new System.Windows.Forms.TextBox();
             this.checkBoxStopLoss = new System.Windows.Forms.CheckBox();
             this.checkBoxWilliam = new System.Windows.Forms.CheckBox();
             this.checkBoxMaxHoldDays = new System.Windows.Forms.CheckBox();
@@ -60,9 +63,6 @@
             this.checkBoxLowPointPeriod = new System.Windows.Forms.CheckBox();
             this.textBoxWilliam = new System.Windows.Forms.TextBox();
             this.checkBoxDetailLog = new System.Windows.Forms.CheckBox();
-            this.textBoxStopLossPoint = new System.Windows.Forms.TextBox();
-            this.checkBoxLeastHoldDays = new System.Windows.Forms.CheckBox();
-            this.textBoxLeastHoldDays = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -268,7 +268,7 @@
             this.textBoxProfit.Name = "textBoxProfit";
             this.textBoxProfit.Size = new System.Drawing.Size(113, 22);
             this.textBoxProfit.TabIndex = 32;
-            this.textBoxProfit.Text = "6";
+            this.textBoxProfit.Text = "10";
             this.textBoxProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxLowPointPeriod
@@ -314,6 +314,37 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rules";
+            // 
+            // textBoxLeastHoldDays
+            // 
+            this.textBoxLeastHoldDays.Location = new System.Drawing.Point(182, 127);
+            this.textBoxLeastHoldDays.Name = "textBoxLeastHoldDays";
+            this.textBoxLeastHoldDays.Size = new System.Drawing.Size(128, 22);
+            this.textBoxLeastHoldDays.TabIndex = 45;
+            this.textBoxLeastHoldDays.Text = "10";
+            this.textBoxLeastHoldDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // checkBoxLeastHoldDays
+            // 
+            this.checkBoxLeastHoldDays.AutoSize = true;
+            this.checkBoxLeastHoldDays.Checked = true;
+            this.checkBoxLeastHoldDays.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLeastHoldDays.Location = new System.Drawing.Point(182, 99);
+            this.checkBoxLeastHoldDays.Name = "checkBoxLeastHoldDays";
+            this.checkBoxLeastHoldDays.Size = new System.Drawing.Size(134, 21);
+            this.checkBoxLeastHoldDays.TabIndex = 44;
+            this.checkBoxLeastHoldDays.Text = "Least Hold Days";
+            this.checkBoxLeastHoldDays.UseVisualStyleBackColor = true;
+            this.checkBoxLeastHoldDays.CheckedChanged += new System.EventHandler(this.checkBoxLeastHoldDays_CheckedChanged);
+            // 
+            // textBoxStopLossPoint
+            // 
+            this.textBoxStopLossPoint.Location = new System.Drawing.Point(16, 127);
+            this.textBoxStopLossPoint.Name = "textBoxStopLossPoint";
+            this.textBoxStopLossPoint.Size = new System.Drawing.Size(145, 22);
+            this.textBoxStopLossPoint.TabIndex = 44;
+            this.textBoxStopLossPoint.Text = "2";
+            this.textBoxStopLossPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // checkBoxStopLoss
             // 
@@ -396,37 +427,6 @@
             this.checkBoxDetailLog.TabIndex = 30;
             this.checkBoxDetailLog.Text = "Show Detailed Log";
             this.checkBoxDetailLog.UseVisualStyleBackColor = true;
-            // 
-            // textBoxStopLossPoint
-            // 
-            this.textBoxStopLossPoint.Location = new System.Drawing.Point(16, 127);
-            this.textBoxStopLossPoint.Name = "textBoxStopLossPoint";
-            this.textBoxStopLossPoint.Size = new System.Drawing.Size(145, 22);
-            this.textBoxStopLossPoint.TabIndex = 44;
-            this.textBoxStopLossPoint.Text = "1";
-            this.textBoxStopLossPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // checkBoxLeastHoldDays
-            // 
-            this.checkBoxLeastHoldDays.AutoSize = true;
-            this.checkBoxLeastHoldDays.Checked = true;
-            this.checkBoxLeastHoldDays.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLeastHoldDays.Location = new System.Drawing.Point(182, 99);
-            this.checkBoxLeastHoldDays.Name = "checkBoxLeastHoldDays";
-            this.checkBoxLeastHoldDays.Size = new System.Drawing.Size(134, 21);
-            this.checkBoxLeastHoldDays.TabIndex = 44;
-            this.checkBoxLeastHoldDays.Text = "Least Hold Days";
-            this.checkBoxLeastHoldDays.UseVisualStyleBackColor = true;
-            this.checkBoxLeastHoldDays.CheckedChanged += new System.EventHandler(this.checkBoxLeastHoldDays_CheckedChanged);
-            // 
-            // textBoxLeastHoldDays
-            // 
-            this.textBoxLeastHoldDays.Location = new System.Drawing.Point(182, 127);
-            this.textBoxLeastHoldDays.Name = "textBoxLeastHoldDays";
-            this.textBoxLeastHoldDays.Size = new System.Drawing.Size(128, 22);
-            this.textBoxLeastHoldDays.TabIndex = 45;
-            this.textBoxLeastHoldDays.Text = "1";
-            this.textBoxLeastHoldDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 

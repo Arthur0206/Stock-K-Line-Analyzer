@@ -26,7 +26,13 @@ namespace K_Line
         double rulesStopLossPoint;
 
         int totalStickPatternFound = 0;
-        int totalProfitMatchFound = 0;
+        int dataNotEnoughCase = 0;
+        double totalRuleFitProfit = 0;      // sum of %
+        int totalRuleFitNum = 0;            // number of cases
+        double avgRuleFitProfit = 0;        // %
+        double totalStopLossProfit = 0;     // sum of %
+        int totalStopLossNum = 0;           // number of cases
+        double avgStopLossProfit = 0;       // %
 
         public Form1()
         {
@@ -146,13 +152,10 @@ namespace K_Line
                 /****************************************************************************************************************/
                 try
                 {
-                    for (int j = i - 3 - rulesLeastHoldDays; j >= 1; j--)
-                    {
-                        if (j == 1)
-                        {
-                            if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("未賣出: 剩餘天數資料不足\n");
-                        }
+                    int j;
 
+                    for (j = i - 3 - rulesLeastHoldDays; j >= 1; j--)
+                    {
                         // Date,Open,High,Low,Close,Volume,Adj Close
                         //   0   1    2    3    4     5       6
                         string[] first_red_data = readText[i].Split(',');
@@ -164,10 +167,15 @@ namespace K_Line
                         {
                             if (i - j >= rulesMaxHoldDays + 3)
                             {
+                                double selling_price = Convert.ToDouble(cur_day_data[1]);
+                                double by_in_price = Convert.ToDouble(buy_in_data[1]);
+
+                                totalRuleFitNum++;
+                                totalRuleFitProfit += (selling_price - by_in_price) / by_in_price;
+
                                 // verify we earn or loss money. if current day's open price is higher than buy in day's open price, then earn money.
-                                if (Convert.ToDouble(cur_day_data[1]) >= Convert.ToDouble(buy_in_data[1]))
+                                if (selling_price >= by_in_price)
                                 {
-                                    totalProfitMatchFound++;
                                     if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 到達等待天數\n");
                                     if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賺 " + cur_day_data[1] + " >= " + buy_in_data[1] + "\n");
                                 }
@@ -189,7 +197,9 @@ namespace K_Line
 
                             if (profit >= rulesWaitingProfit)
                             {
-                                totalProfitMatchFound++;
+                                totalRuleFitNum++;
+                                totalRuleFitProfit += rulesWaitingProfit;
+
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 超過預期利潤\n");
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("當天最高價 profit = " + profit + "%" + " > " + rulesWaitingProfit + "%" + "\n");
 
@@ -200,15 +210,31 @@ namespace K_Line
                         // check if we reach stop loss point
                         if (checkBoxStopLoss.Checked)
                         {
+                            double cur_day_open_price = Convert.ToDouble(cur_day_data[1]);
+                            double cur_day_lowest_price = Convert.ToDouble(cur_day_data[3]);
+                            double buy_in_price = Convert.ToDouble(buy_in_data[1]);
+
                             // if current day's lowest price is less than buy in price, sell it on buy in price. assume transaction fee is 1%.
-                            if (Convert.ToDouble(cur_day_data[3]) <= Convert.ToDouble(buy_in_data[1]) * ((100.0 + rulesStopLossPoint) / 100))
+                            if (cur_day_lowest_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
                             {
-                                totalStickPatternFound--;
+                                totalStopLossNum++;
+
+                                if (cur_day_open_price <= buy_in_price * ((100.0 + rulesStopLossPoint) / 100))
+                                    totalStopLossProfit += (cur_day_open_price - buy_in_price) / buy_in_price;
+                                else
+                                    totalStopLossProfit += rulesStopLossPoint;
+                                
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("賣出 @ " + cur_day_data[0] + ": 降至買進價\n");
                                 if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("本日最低: " + cur_day_data[3] + ", 本日最高: " + cur_day_data[2] + ", 買進價: " + buy_in_data[1] + "\n");
                                 break;
                             }
                         }
+                    }
+
+                    if (j < 1)
+                    {
+                        dataNotEnoughCase++;
+                        if (checkBoxDetailLog.Checked) MessageTextBox.AppendText("未賣出: 剩餘天數資料不足\n");
                     }
                 }
                 catch (Exception)
@@ -265,8 +291,14 @@ namespace K_Line
                 MessageBox.Show("Cannot open the file(s) in the selected folder.\n");
             }
 
-            totalProfitMatchFound = 0;
             totalStickPatternFound = 0;
+            dataNotEnoughCase = 0;
+            totalRuleFitProfit = 0;     // sum of %
+            totalRuleFitNum = 0;        // number of cases
+            avgRuleFitProfit = 0;       // %
+            totalStopLossProfit = 0;    // sum of %
+            totalStopLossNum = 0;       // number of cases
+            avgStopLossProfit = 0;      // %
 
             if (files != null)
             {
@@ -296,9 +328,15 @@ namespace K_Line
 
             MessageTextBox.AppendText("\n");
 
-            MessageTextBox.AppendText("共有 " + totalStickPatternFound + " 個連三紅, ");
-            MessageTextBox.AppendText("其中共 " + totalProfitMatchFound + " 個符合獲利條件.\n");
-            MessageTextBox.AppendText("成功率 = " + Convert.ToString(100.00 * (double)totalProfitMatchFound / (double)totalStickPatternFound) + "%\n");
+            double finalAvgProfig = (totalStopLossProfit + totalRuleFitProfit) / (totalStopLossNum + totalRuleFitNum);
+
+            MessageTextBox.AppendText("- 共有 " + totalStickPatternFound + " 個連三紅。\n");
+            MessageTextBox.AppendText("- 資料不足無法預測 " + dataNotEnoughCase + " 個。\n");
+            MessageTextBox.AppendText("- 符合賣出條件 #: " + totalRuleFitNum + " 個。\n");
+            MessageTextBox.AppendText("      => Avg Profit: " + totalRuleFitProfit / totalRuleFitNum + " %。\n");
+            MessageTextBox.AppendText("- 達到停損點 #: " + totalStopLossNum + " 個。\n");
+            MessageTextBox.AppendText("      => Avg Profit: " + totalStopLossProfit / totalStopLossNum + " %。\n");
+            MessageTextBox.AppendText("- 最終平均獲利率: " + finalAvgProfig + " %。\n");
             MessageTextBox.AppendText("-------------------------------------------------------------\n");
         }
 
@@ -466,8 +504,6 @@ namespace K_Line
         private void buttonClear_Click(object sender, EventArgs e)
         {
             MessageTextBox.Clear();
-            totalStickPatternFound = 0;
-            totalProfitMatchFound = 0;
         }
 
         private void checkBoxMaxHoldDays_CheckedChanged(object sender, EventArgs e)
